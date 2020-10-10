@@ -1,26 +1,24 @@
 import React from 'react'
+import Filter from './components/Filter'
+import Form from './components/Form'
+import Tasks from './components/Tasks'
 
 function App() {
+  const list = [
+    'Laundry',
+    'Cook dinner',
+    'Study hooks',
+    'send PR to Hacktober Fest',
+  ]
   return (
     <div className="App">
       <header className="App-header">
         <h1>To do list</h1>
+        <Filter />
       </header>
       <main>
-        <ul>
-          <li>
-            <input type="checkbox" />
-            Study
-          </li>
-          <li>Cook dinner</li>
-          <li>Play Luigi's mansion</li>
-        </ul>
-        <input placeholder="Write a task" />
-        <select>
-          <option>Category</option>
-          <option value="work">work</option>
-          <option value="home">home</option>
-        </select>
+        <Tasks list={list} />
+        <Form />
       </main>
     </div>
   )
