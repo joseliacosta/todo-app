@@ -1,5 +1,6 @@
 import React from 'react'
 import Filter from './components/Filter'
+import Form from './components/Form'
 import { Tasks } from './components/Tasks'
 
 function App() {
@@ -32,6 +33,13 @@ function App() {
     setTodos(newTodos)
   }
 
+  const addTodo = (text, category) => {
+    console.log(text, category)
+    const newTodos = [...todos, { text: text, category: category }]
+    console.log('tudo junto', newTodos)
+    setTodos(newTodos)
+  }
+
   return (
     <div className="app">
       <header className="App-header">
@@ -40,6 +48,7 @@ function App() {
       </header>
       <main>
         <Tasks list={todos} completeTodo={completeTodo}></Tasks>
+        <Form addTodo={addTodo} />
       </main>
     </div>
   )
