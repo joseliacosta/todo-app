@@ -1,13 +1,37 @@
-import React from 'react'
-import Filter from '../Filter'
+import React, { useState } from 'react'
 
-function Form(props) {
+function Form({ addTodo }) {
+  const [value, setValue] = useState('')
+  const [category, setCategory] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!value) return
+    addTodo(value, category)
+    setValue('')
+    setCategory('')
+  }
+
   return (
-    <div>
-      <button>+</button>
-      <input type="text" placeholder="Write a task" value={props.description} />
-      <input type="text" placeholder="Category" value={props.category} />
-    </div>
+    <form onSubmit={handleSubmit} data-testid="form">
+      <input
+        type="text"
+        className="input"
+        placeholder="Type a new task"
+        value={value}
+        data-testid="input-add-task"
+        onChange={(e) => setValue(e.target.value)}
+      />
+
+      <input
+        type="text"
+        placeholder="Category"
+        className="input"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      />
+      <button type="submit">Add</button>
+    </form>
   )
 }
 
