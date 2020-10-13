@@ -32,6 +32,7 @@ const StyledTask = styled.li`
   border-radius: 3px;
   border: 1px solid #ebebeb;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  color: #7e7e7e;
   font-size: 16px;
   height: 32px;
   margin-bottom: 6px;
@@ -46,7 +47,8 @@ const Description = styled.span`
 `
 const Category = styled.label`
   font-weight: 700;
-  background: #ebebeb;
+  color: #ffffff;
+  background: #5846f6;
   border-radius: 4px;
   padding: 5px;
   margin-left: auto;
