@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Filter from './components/Filter'
 import Form from './components/Form'
 import { Tasks } from './components/Tasks'
+import { filterTodos } from './utils'
 
 const Container = styled.div`
   display: flex;
@@ -71,7 +72,7 @@ const App = () => {
       console.log(category)
       setFilter(todos)
     } else {
-      filteredList = todos.filter((todo) => todo.category === category)
+      filteredList = filterTodos(todos, category)
       setFilter(filteredList)
     }
   }
