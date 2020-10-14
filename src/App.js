@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import Filter from './components/Filter'
 import Form from './components/Form'
 import { Tasks } from './components/Tasks'
 
-function App() {
-  const [todos, setTodos] = React.useState([
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid red;
+  @media screen and (min-width: 720px) {
+    max-width: 640px;
+  }
+`
+const Header = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const App = () => {
+  const [todos, setTodos] = useState([
     {
       text: 'Learn about React',
       category: 'work',
@@ -26,6 +43,13 @@ function App() {
       isCompleted: false,
     },
   ])
+  const [filteredTodos, setFilter] = useState(todos)
+
+  const categories = [...new Set(todos.map((item) => item.category))]
+
+  useEffect(() => {
+    setFilter(todos)
+  }, [todos])
 
   const completeTodo = (index) => {
     const newTodos = [...todos]
@@ -34,23 +58,31 @@ function App() {
   }
 
   const addTodo = (text, category) => {
-    console.log(text, category)
     const newTodos = [...todos, { text: text, category: category }]
-    console.log('tudo junto', newTodos)
     setTodos(newTodos)
   }
 
+  const filterByCategory = (category) => {
+    let filteredList = []
+    console.log(category)
+    if (category === 'All' || category === 'Filter by') {
+      console.log(category)
+      setFilter(todos)
+    } else {
+      filteredList = todos.filter((todo) => todo.category === category)
+      setFilter(filteredList)
+    }
+  }
+
   return (
-    <div className="app">
-      <header className="App-header">
+    <Container>
+      <Header>
         <h1>To do list</h1>
-        <Filter />
-      </header>
-      <main>
-        <Tasks list={todos} completeTodo={completeTodo}></Tasks>
-        <Form addTodo={addTodo} />
-      </main>
-    </div>
+        <Filter options={categories} onChange={filterByCategory} />
+      </Header>
+      <Tasks list={filteredTodos} completeTodo={completeTodo}></Tasks>
+      <Form addTodo={addTodo} />
+    </Container>
   )
 }
 
