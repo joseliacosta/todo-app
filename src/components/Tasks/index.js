@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 const StyledTasks = styled.ul`
   list-style: none;
-  max-width: 320px;
+  padding: 0;
+  margin: 0;
 `
 
 const Tasks = (props) => {
