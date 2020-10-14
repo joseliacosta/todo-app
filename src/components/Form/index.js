@@ -3,13 +3,22 @@ import styled from 'styled-components'
 const StyledForm = styled.form`
   padding: 0;
   margin: 0;
+  width: 100%;
   display: flex;
+  flex-direction: column-reverse;
   justify-content: space-between;
-  max-width: 640px;
 
   input {
     &:last-child {
       margin-right: 0;
+    }
+  }
+
+  @media screen and (min-width: 667px) {
+    flex-direction: row;
+    justify-content: space-between;
+    button {
+      margin-right: 6px;
     }
   }
 `
@@ -23,7 +32,9 @@ const InputText = styled.input`
   height: 32px;
   padding: 4px 12px;
   margin-right: 6px;
+  margin-bottom: 6px;
   box-sizing: border-box;
+  width: 100%;
 `
 
 const Button = styled.button`
@@ -36,7 +47,7 @@ const Button = styled.button`
   height: 32px;
   padding: 4px 12px;
   box-sizing: border-box;
-  margin-right: 6px;
+
   cursor: pointer;
   &:hover {
     background: #cc2560;

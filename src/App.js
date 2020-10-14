@@ -10,15 +10,17 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  border: 1px solid red;
-  @media screen and (min-width: 720px) {
-    max-width: 640px;
+  width: calc(100vw-40px);
+  @media screen and (min-width: 667px) {
+    max-width: 500px;
+    margin: 0 auto;
   }
 `
 const Header = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `
 const App = () => {
   const [todos, setTodos] = useState([
