@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
-import App from './App'
+import App from '.'
 
 test('renders app title', () => {
   const { getByText } = render(<App />)

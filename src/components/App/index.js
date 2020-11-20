@@ -1,28 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import Filter from './components/Filter'
-import Form from './components/Form'
-import { Tasks } from './components/Tasks'
-import { filterTodos } from './utils'
+import * as S from './styles'
+import Filter from '../Filter'
+import Form from '../Form'
+import { Tasks } from '../Tasks'
+import { filterTodos } from '../../utils'
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  width: calc(100vw-40px);
-  @media screen and (min-width: 667px) {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-`
-const Header = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`
 const App = () => {
   const [todos, setTodos] = useState([
     {
@@ -78,14 +60,14 @@ const App = () => {
   }
 
   return (
-    <Container>
-      <Header>
+    <S.Container>
+      <S.Header>
         <h1>To do list</h1>
         <Filter options={categories} onChange={filterByCategory} />
-      </Header>
+      </S.Header>
       <Tasks list={filteredTodos} completeTodo={completeTodo}></Tasks>
       <Form addTodo={addTodo} />
-    </Container>
+    </S.Container>
   )
 }
 
